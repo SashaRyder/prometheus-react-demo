@@ -81,7 +81,7 @@ const App = (): JSX.Element => {
         {!serverMetrics.result && !serverMetrics.loading && (
           <>
             <AppRightMessage>An unexpected error occurred:</AppRightMessage>
-            <AppRightMessage>{serverTime.error}</AppRightMessage>
+            <AppRightMessage>{serverMetrics.error}</AppRightMessage>
           </>
         )}
       </AppRight>
