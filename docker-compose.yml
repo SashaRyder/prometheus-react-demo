@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  client:
+    image: node:18
+    environment:
+      - REACT_APP_API_BASE_URL=http://localhost:3001
+      - REACT_APP_API_KEY=mysecrettoken
+    container_name: client
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/app
+    working_dir: "/app"
+    command: >
+      bash -c "yarn install && yarn start"
+
+  server:
+    image: node:18
+    environment:
+      - API_KEY=mysecrettoken
+      - PORT=3001
+    container_name: server
+    restart: unless-stopped
+    ports:
+      - 3001:3001
+    volumes:
+      - ./server:/app
+    working_dir: "/app"
+    command: >
+      bash -c "yarn install && yarn start"
